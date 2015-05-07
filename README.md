@@ -22,7 +22,7 @@ Install dependencies:
 $ npm install
 ```
 
-__Also, you need to have ffmgep installed.__
+__Also, you need to have ffmgep installed to run the video server.__
 
 https://www.ffmpeg.org/
 
