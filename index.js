@@ -6,13 +6,15 @@ var arDrone = require('ar-drone');
 
 var service = require('./service');
 var commandServer = net.createServer(handleCommandConnection);
-var commandPort = Number(process.env.COMMAND_PORT) || 4000;
+var commandPort = Number(process.env.COMMAND_PORT) || 3001;
 commandServer.listen(commandPort, function() {
   console.log('command server running on %j', commandServer.address());
 });
 
 function handleCommandConnection(conn) {
-  var client  = arDrone.createClient();
+  var client  = arDrone.createClient({
+    ip: process.env.DRONE || '192.168.1.1'
+  });
   var server = rpc(service(client));
   server.pipe(conn).pipe(server);
 }
@@ -21,7 +23,7 @@ function handleCommandConnection(conn) {
 /// Video server
 
 var videoServer = net.createServer(handleVideoConnection);
-var videoPort = Number(process.env.VIDEO_PORT) || 4001;
+var videoPort = Number(process.env.VIDEO_PORT) || 3002;
 videoServer.listen(videoPort, function() {
   console.log('video server running on %j', videoServer.address());
 });
