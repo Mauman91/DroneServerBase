@@ -38,7 +38,7 @@ $ npm start
 
 * `DRONE`: IP Address for the drone. Defaults to "192.168.1.1".
 * `COMMAND_PORT`: TCP command server port. Defaults to 3001.
-* `VIDEO_PORT`: TCP video server port. Defaults to 3002.
+* `VIDEO_PORT`: HTTP video server port. Defaults to 3002.
 * `NOVIDEO`: Launch without the video server
 
 
