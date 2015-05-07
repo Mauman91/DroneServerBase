@@ -2,6 +2,14 @@ var rpc = require('rpc-stream');
 var net = require('net');
 var arDrone = require('ar-drone');
 
+var clientOptions = {
+  ip: process.env.DRONE || '192.168.1.1'
+};
+
+var client = arDrone.createClient(clientOptions);
+
+console.log('Drone client options: %j', clientOptions);
+
 /// Command server
 
 var service = require('./service');
@@ -12,30 +20,12 @@ commandServer.listen(commandPort, function() {
 });
 
 function handleCommandConnection(conn) {
-  var client  = arDrone.createClient({
-    ip: process.env.DRONE || '192.168.1.1'
-  });
   var server = rpc(service(client));
   server.pipe(conn).pipe(server);
 }
 
+if (! process.env.NOVIDEO) {
+  var video = require('./video');
 
-/// Video server
-
-var videoServer = net.createServer(handleVideoConnection);
-var videoPort = Number(process.env.VIDEO_PORT) || 3002;
-videoServer.listen(videoPort, function() {
-  console.log('video server running on %j', videoServer.address());
-});
-
-function handleVideoConnection(conn) {
-  console.log('new video client');
-  var client  = arDrone.createClient();
-  var video = client.getVideoStream();
-  video.pipe(conn);
-
-  conn.once('close', function() {
-    console.log('closing video client...');
-    video.end();
-  });
+  video(client);
 }

@@ -4,6 +4,7 @@ module.exports = [
   'land',
   'stop',
   'up',
+  'down',
   'clockwise',
   'counterClockwise',
   'front',

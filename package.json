@@ -18,6 +18,8 @@
   "homepage": "https://github.com/pgte/node-drone-server-base",
   "dependencies": {
     "ar-drone": "^0.3.3",
+    "buffy": "0.0.5",
+    "mkdirp": "^0.5.0",
     "rpc-stream": "^2.1.1"
   }
 }

@@ -22,6 +22,11 @@ Install dependencies:
 $ npm install
 ```
 
+__Also, you need to have ffmgep installed.__
+
+https://www.ffmpeg.org/
+
+
 
 ## Run
 
@@ -31,8 +36,10 @@ $ npm start
 
 ### Environment variables:
 
+* `DRONE`: IP Address for the drone. Defaults to "192.168.1.1".
 * `COMMAND_PORT`: TCP command server port. Defaults to 3001.
 * `VIDEO_PORT`: TCP video server port. Defaults to 3002.
+* `NOVIDEO`: Launch without the video server
 
 
 ## TCP Command Server
@@ -88,4 +95,10 @@ $ nc localhost 3001
 
 ## Video Server
 
-There is a video server running on TCP port 3002.
+There is a video server running on port 3002.
+
+Go to [http://localhost:3002/nodecopter.mjpeg](http://localhost:3002/nodecopter.mjpeg) to check it out.
+
+(if you want to launch without a video server, set the `NOVIDEO` environment variable to `true`).
+
+If you need to change the server output format, change the `ffserver.conf` file.
