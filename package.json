@@ -1,0 +1,23 @@
+{
+  "name": "node-drone-server-base",
+  "version": "0.0.1",
+  "description": "node drone server base",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pgte/node-drone-server-base.git"
+  },
+  "author": "pgte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgte/node-drone-server-base/issues"
+  },
+  "homepage": "https://github.com/pgte/node-drone-server-base",
+  "dependencies": {
+    "ar-drone": "^0.3.3",
+    "rpc-stream": "^2.1.1"
+  }
+}
