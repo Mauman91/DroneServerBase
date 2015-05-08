@@ -8,7 +8,7 @@
 
 var util   = require('util')
   , Transform = require('stream').Transform
-  , buffy  = require('buffy')
+  , buffy  = require('buffy/index.js')
   ;
 
 module.exports = PaVEParser;
